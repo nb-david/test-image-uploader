@@ -139,10 +139,8 @@ const ImageUploader = ({
         showUploadList={false}
         customRequest={handlePreview}
         beforeUpload={handleFileSize}
-      >
-        <button>click to upload</button>
-      </Upload>
-      {imgPreview && (
+      />
+      {imgPreview.src && (
         <div className="img-uploader">
           {/* @ts-ignore */}
           <div className="img-uploader-container" style={{ imgWidth, imgHeight }}>
@@ -152,7 +150,7 @@ const ImageUploader = ({
           <img src={croppedView} className={"img-uploader-preview " + type} alt="cropped preview" />
         </div>
       )}
-      {imgPreview && (
+      {imgPreview.src && (
         <div className="actions-bar">
           <Button type="dashed" onClick={handleCancel}>
             Cancel

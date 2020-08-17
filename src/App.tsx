@@ -1,10 +1,10 @@
 import React from "react";
 import ImageUploader from "./components/ImageUploader";
-import { default as Upload, RcFile } from "antd/lib/upload";
+
+import "./App.css";
 
 export const App = () => (
-  <h1>
-    Hello React
+  <div className="upload-cover">
     <ImageUploader type="circle" onUpload={() => console.log("few")} />
-  </h1>
+  </div>
 );
