@@ -1,7 +1,7 @@
 {
   "name": "@nb-david/image-uploader",
   "version": "1.0.0",
-  "main": "dist/index.tsx",
+  "main": "build/output.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -23,15 +23,20 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {
-    "antd": "^4.5.4",
-    "cropperjs": "^1.5.7",
+  "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --open --hot",
     "build": "webpack --mode production --progress --hide-modules",
+    "module": "webpack --mode production --progress --hide-modules --config webpack.prod.js",
     "check-type": "tsc -w"
+  },
+  "dependencies": {
+    "antd": "^4.5.4",
+    "cropperjs": "^1.5.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

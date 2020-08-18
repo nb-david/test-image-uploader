@@ -55,7 +55,6 @@ const ImageUploader = ({
           setCroppedView(canvas.toDataURL("image/png"));
         },
       });
-      console.log(cropper);
     }
   });
 
