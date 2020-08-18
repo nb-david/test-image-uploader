@@ -1,9 +1,11 @@
 const path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
+    filename: "index_bundle.js",
   },
   module: {
     rules: [
@@ -23,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader',"css-loader"],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -31,6 +33,17 @@ module.exports = {
     // Enable webpack find ts and tsx files without an extension
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      templateContent: `
+    <html>
+      <body>
+        <div id="root"></div>
+      </body>
+    </html>
+  `,
+    }),
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
     port: 9000,
