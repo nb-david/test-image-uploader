@@ -29,7 +29,7 @@
     "react-dom": "^16.13.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --open --hot",
+    "dev": "webpack-dev-server --open --hot --config webpack.dev.js",
     "build": "webpack --mode production --progress --hide-modules",
     "module": "webpack --mode production --progress --hide-modules --config webpack.prod.js",
     "check-type": "tsc -w"
