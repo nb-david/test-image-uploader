@@ -3,9 +3,19 @@ import ImageUploader from "./components/ImageUploader";
 
 import "./App.css";
 
-const App = () => (
-  <div className="upload-cover">
-    <ImageUploader type="circle" onUpload={() => console.log("few")} />
+interface AppProps {
+  type: string;
+  onUpload: () => void;
+  image: string;
+}
+
+const App = ({ type, onUpload, image }: AppProps) => (
+  <div className="upload-cover-component">
+    <ImageUploader type={type} onUpload={onUpload} image={image} />
+    <div className="upload-cover-illustrate">
+      <div>Tap to add an image</div>
+      <span>Picture size should not exceed 5M</span>
+    </div>
   </div>
 );
 
