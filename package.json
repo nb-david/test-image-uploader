@@ -1,6 +1,6 @@
 {
   "name": "test-image-uploader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
@@ -30,7 +30,6 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --open --hot --config webpack.dev.js",
-    "build": "webpack --mode production --progress --hide-modules",
     "dist": "webpack --mode production --progress --hide-modules --config webpack.prod.js",
     "check-type": "tsc -w",
     "prepublishOnly": "npm run dist"
