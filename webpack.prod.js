@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/indexProd.ts",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "output.js",
+    filename: "index.js",
     libraryTarget: 'commonjs'
   },
   externals: ["react", "react-dom", "cropperjs", "antd"],
