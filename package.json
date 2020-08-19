@@ -1,6 +1,6 @@
 {
-  "name": "@nb-david/image-uploader",
-  "version": "1.0.0",
+  "name": "test-image-uploader",
+  "version": "1.0.1",
   "main": "build/output.js",
   "license": "MIT",
   "devDependencies": {
@@ -39,5 +39,15 @@
     "cropperjs": "^1.5.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nb-david/test-image-uploader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nb-david/test-image-uploader/issues"
+  },
+  "homepage": "https://github.com/nb-david/test-image-uploader#readme",
+  "description": ""
 }
