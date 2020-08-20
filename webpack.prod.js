@@ -1,4 +1,5 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: "./src/indexProd.ts",
@@ -7,6 +8,7 @@ module.exports = {
     filename: "index.js",
     libraryTarget: 'commonjs'
   },
+  plugins: [new CleanWebpackPlugin()],
   externals: ["react", "react-dom", "cropperjs", "antd"],
   module: {
     rules: [
@@ -28,6 +30,13 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]',
+        },
+      }
     ],
   },
   target: 'node',
