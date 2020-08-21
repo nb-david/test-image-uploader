@@ -11,6 +11,10 @@ interface AppProps {
   outputHeight?: number;
 }
 
-const App = (props: AppProps) => <ImageUploader {...props} />;
+const App = (props: AppProps) => (
+  <div>
+    <ImageUploader {...props} />
+  </div>
+);
 
 export default App;
