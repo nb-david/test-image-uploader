@@ -2,103 +2,11 @@ import React, { Fragment, useState, useRef, useEffect } from "react";
 import Cropper from "cropperjs";
 import { Button } from "antd";
 import { default as Upload, RcFile } from "antd/lib/upload";
-import styled from "styled-components";
 
-import imgUploadDefault from "../../assets/img/upload-account-cover.png";
-import imgUploadDefaultHover from "../../assets/img/upload-account-cover-hover.png";
+import { StyledCover, StyledIllustrate, StyledComponent } from "./styled";
+import { ImageUploaderProps , ImgPreview, CanvasOpt} from "./types";
 
 import "cropperjs/dist/cropper.min.css";
-import "./ImageUploader.css";
-
-interface ImgPreview {
-  width: number;
-  height: number;
-  src: string | ArrayBuffer | null;
-}
-
-interface ImageEl {
-  current: any;
-}
-
-interface ImageUploaderProps {
-  className: string;
-  type: string;
-  onUpload: any;
-  outputWidth: number;
-  outputHeight: number;
-  image: string;
-}
-
-interface CanvasOpt {
-  width: number;
-  height: number;
-}
-
-const Component = styled.div`
-  display: flex;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 16px;
-  line-height: 1.5;
-  font-variant: tabular-nums;
-`;
-
-const Illustrate = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 15px;
-  color: #656565;
-
-  & > div {
-    margin-bottom: 9px;
-  }
-
-  & > span {
-    font-size: 12px;
-  }
-`;
-
-interface CoverProps {
-  image?: string;
-}
-
-const Cover = styled.div<CoverProps>`
-  position: relative;
-  display: block;
-  cursor: pointer;
-  width: 70px;
-  height: 70px;
-  background-size: cover;
-  border-radius: 50%;
-  text-size-adjust: 100%;
-  background-image: url(${(props) => (props.image ? props.image : imgUploadDefault)});
-
-  &:hover {
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url(${imgUploadDefaultHover});
-      background-size: cover;
-      pointer-events: none;
-    }
-  }
-
-  & .ant-upload {
-    background-position: center center;
-    background-size: cover;
-    display: block !important;
-    width: 100%;
-    height: 100%;
-    -webkit-appearance: none;
-    outline: none;
-  }
-`;
 
 const ImageUploader = ({
   className = "",
@@ -204,8 +112,8 @@ const ImageUploader = ({
   imgHeight = 440;
 
   return (
-    <Component>
-      <Cover image={image}>
+    <StyledComponent>
+      <StyledCover image={image}>
         <Upload
           className={className}
           showUploadList={false}
@@ -236,12 +144,12 @@ const ImageUploader = ({
             </Button>
           </div>
         )}
-      </Cover>
-      <Illustrate>
+      </StyledCover>
+      <StyledIllustrate>
         <div>Tap to add an image</div>
         <span>Picture size should not exceed 5M</span>
-      </Illustrate>
-    </Component>
+      </StyledIllustrate>
+    </StyledComponent>
   );
 };
 

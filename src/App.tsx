@@ -1,7 +1,6 @@
 import React from "react";
 import ImageUploader from "./components/ImageUploader";
-
-import "./App.css";
+import Theme from './themes'
 
 interface AppProps {
   type: string;
@@ -12,9 +11,9 @@ interface AppProps {
 }
 
 const App = (props: AppProps) => (
-  <div>
+  <Theme>
     <ImageUploader {...props} />
-  </div>
+  </Theme>
 );
 
 export default App;
