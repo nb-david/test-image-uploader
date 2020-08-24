@@ -12,6 +12,8 @@ export const StyledComponent = styled.div`
   font-size: 16px;
   line-height: 1.5;
   font-variant: tabular-nums;
+  background: ${(props) => props.theme.colors.bgPrimary};
+
 `;
 
 export const StyledIllustrate = styled.div`
@@ -19,7 +21,7 @@ export const StyledIllustrate = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 15px;
-  color: ${props => props.theme.color.primary};
+  color: ${(props) => props.theme.colors.primary};
 
   & > div {
     margin-bottom: 9px;

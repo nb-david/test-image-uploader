@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
-import defaultTheme from './default'
+import defaultTheme from "./default";
+import darkTheme from "./dark";
 
-interface ThemeProps {
+export interface ThemeProps {
   themeName?: string;
-  children?: React.ReactNode;
 }
 
-const Theme = ({ themeName, children }: ThemeProps) => {
-  return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
+const getThemeObj = (name: string | undefined) => {
+  if (name == "default") {
+    return defaultTheme;
+  } else if (name == "dark") {
+    return darkTheme;
+  }
+};
+
+const Theme = ({ themeName, children }: ThemeProps & { children?: React.ReactNode }) => {
+  const [theme, setTheme] = useState<any>(getThemeObj(themeName));
+  useEffect(() => {
+    setTheme(getThemeObj(themeName));
+  }, [themeName]);
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
+
+Theme.defaultProps = {
+  themeName: "default",
 };
 
 export default Theme;

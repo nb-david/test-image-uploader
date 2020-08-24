@@ -4,9 +4,10 @@ import { Button } from "antd";
 import { default as Upload, RcFile } from "antd/lib/upload";
 
 import { StyledCover, StyledIllustrate, StyledComponent } from "./styled";
-import { ImageUploaderProps , ImgPreview, CanvasOpt} from "./types";
+import { ImageUploaderProps, ImgPreview, CanvasOpt } from "./types";
 
 import "cropperjs/dist/cropper.min.css";
+import Theme, { ThemeProps } from "../../themes";
 
 const ImageUploader = ({
   className = "",
@@ -15,7 +16,8 @@ const ImageUploader = ({
   onUpload,
   outputWidth,
   outputHeight,
-}: ImageUploaderProps) => {
+  themeName,
+}: ImageUploaderProps & ThemeProps) => {
   const [croppedView, setCroppedView] = useState("");
   const [imgPreview, setImgPreview] = useState<Partial<ImgPreview>>({});
   const cropper = useRef<any>(null);
@@ -112,44 +114,49 @@ const ImageUploader = ({
   imgHeight = 440;
 
   return (
-    <StyledComponent>
-      <StyledCover image={image}>
-        <Upload
-          className={className}
-          showUploadList={false}
-          customRequest={handlePreview}
-          beforeUpload={handleFileSize}
-        />
-        {imgPreview.src && (
-          <div className="img-uploader">
-            {/* @ts-ignore */}
-            <div className="img-uploader-container" style={{ width: imgWidth, height: imgHeight }}>
+    <Theme themeName={themeName}>
+      <StyledComponent>
+        <StyledCover image={image}>
+          <Upload
+            className={className}
+            showUploadList={false}
+            customRequest={handlePreview}
+            beforeUpload={handleFileSize}
+          />
+          {imgPreview.src && (
+            <div className="img-uploader">
               {/* @ts-ignore */}
-              <img ref={imageEl} src={imgPreview.src} alt="source" />
+              <div
+                className="img-uploader-container"
+                style={{ width: imgWidth, height: imgHeight }}
+              >
+                {/* @ts-ignore */}
+                <img ref={imageEl} src={imgPreview.src} alt="source" />
+              </div>
+              <img
+                src={croppedView}
+                className={"img-uploader-preview " + type}
+                alt="cropped preview"
+              />
             </div>
-            <img
-              src={croppedView}
-              className={"img-uploader-preview " + type}
-              alt="cropped preview"
-            />
-          </div>
-        )}
-        {imgPreview.src && (
-          <div className="actions-bar">
-            <Button type="dashed" onClick={handleCancel}>
-              Cancel
-            </Button>
-            <Button type="dashed" onClick={handleUpload}>
-              OK
-            </Button>
-          </div>
-        )}
-      </StyledCover>
-      <StyledIllustrate>
-        <div>Tap to add an image</div>
-        <span>Picture size should not exceed 5M</span>
-      </StyledIllustrate>
-    </StyledComponent>
+          )}
+          {imgPreview.src && (
+            <div className="actions-bar">
+              <Button type="dashed" onClick={handleCancel}>
+                Cancel
+              </Button>
+              <Button type="dashed" onClick={handleUpload}>
+                OK
+              </Button>
+            </div>
+          )}
+        </StyledCover>
+        <StyledIllustrate>
+          <div>Tap to add an image</div>
+          <span>Picture size should not exceed 5M</span>
+        </StyledIllustrate>
+      </StyledComponent>
+    </Theme>
   );
 };
 
