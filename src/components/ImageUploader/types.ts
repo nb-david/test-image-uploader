@@ -9,12 +9,12 @@ export interface ImgPreview {
 }
 
 export interface ImageUploaderProps {
-  className: string;
+  className?: string;
   type: string;
-  onUpload: any;
-  outputWidth: number;
-  outputHeight: number;
-  image: string;
+  onUpload: (blob: any) => void;
+  outputWidth?: number;
+  outputHeight?: number;
+  image?: string;
 }
 
 export interface CanvasOpt {

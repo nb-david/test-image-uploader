@@ -15,7 +15,7 @@ const ImageUploader = ({
   onUpload,
   outputWidth,
   outputHeight,
-}: Partial<ImageUploaderProps>) => {
+}: ImageUploaderProps) => {
   const [croppedView, setCroppedView] = useState("");
   const [imgPreview, setImgPreview] = useState<Partial<ImgPreview>>({});
   const cropper = useRef<any>(null);

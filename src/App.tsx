@@ -1,18 +1,12 @@
 import React from "react";
 import ImageUploader from "./components/ImageUploader";
-import Theme from './themes'
+import Theme from "./themes";
 
-interface AppProps {
-  type: string;
-  onUpload: () => void;
-  image?: string;
-  outputWidth?: number;
-  outputHeight?: number;
-}
+import data from './data'
 
-const App = (props: AppProps) => (
+const App = () => (
   <Theme>
-    <ImageUploader {...props} />
+    <ImageUploader {...data.ImageUploader} />
   </Theme>
 );
 
