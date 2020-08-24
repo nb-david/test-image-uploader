@@ -1,17 +1,23 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import Cropper from "cropperjs";
-import { Button } from "antd";
+
 import { default as Upload, RcFile } from "antd/lib/upload";
 
 import { StyledCover, StyledIllustrate, StyledComponent } from "./styled";
 import { ImageUploaderProps, ImgPreview, CanvasOpt } from "./types";
-
-import "cropperjs/dist/cropper.min.css";
+import Button from '../Button';
 import Theme, { ThemeProps } from "../../themes";
 
+import "cropperjs/dist/cropper.min.css";
+
+const defaultProps = {
+  type: "circle",
+  themeName: "default"
+}
+
 const ImageUploader = ({
-  className = "",
-  type = "",
+  className,
+  type,
   image,
   onUpload,
   outputWidth,
@@ -159,5 +165,7 @@ const ImageUploader = ({
     </Theme>
   );
 };
+
+ImageUploader.defaultProps = defaultProps;
 
 export default ImageUploader;
