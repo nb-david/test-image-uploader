@@ -14,6 +14,11 @@ export const StyledComponent = styled.div`
   font-variant: tabular-nums;
   background: ${(props) => props.theme.colors.bgPrimary};
 
+  & .img-uploader-preview {
+    & .circle {
+      border-radius: 200px;
+    }
+  }
 `;
 
 export const StyledIllustrate = styled.div`

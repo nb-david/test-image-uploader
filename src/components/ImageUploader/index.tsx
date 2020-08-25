@@ -11,13 +11,13 @@ import Theme, { ThemeProps } from "../../themes";
 import "cropperjs/dist/cropper.min.css";
 
 const defaultProps = {
-  type: "circle",
+  previewType: "circle",
   themeName: "default"
 }
 
 const ImageUploader = ({
   className,
-  type,
+  previewType,
   image,
   onUpload,
   outputWidth,
@@ -141,7 +141,7 @@ const ImageUploader = ({
               </div>
               <img
                 src={croppedView}
-                className={"img-uploader-preview " + type}
+                className={"img-uploader-preview " + previewType}
                 alt="cropped preview"
               />
             </div>
