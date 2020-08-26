@@ -34,6 +34,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --hot --config webpack.dev.js",
     "dist": "webpack --mode production --progress --hide-modules --config webpack.prod.js",
+    "dist:docs": "npx concat-md src/components --toc --dir-name-as-title > src/components/README.md",
     "check-type": "tsc -w",
     "prepublishOnly": "npm run dist"
   },
