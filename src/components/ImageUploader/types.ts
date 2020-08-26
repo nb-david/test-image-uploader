@@ -10,11 +10,12 @@ export interface ImgPreview {
 
 export interface ImageUploaderProps {
   className?: string;
-  previewType: "circle" | "square" | undefined;
+  previewType: "circle" | "square";
   onUpload: (blob: any) => void;
   outputWidth?: number;
   outputHeight?: number;
   image?: string;
+  sizeLimit?: number;
 }
 
 export interface CanvasOpt {

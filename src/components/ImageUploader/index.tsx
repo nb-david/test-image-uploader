@@ -14,21 +14,17 @@ import Button from "../Button";
 import Theme, { ThemeProps } from "../../themes";
 
 import "cropperjs/dist/cropper.min.css";
-import 'antd/dist/antd.css';
-
-const defaultProps = {
-  previewType: "circle",
-  themeName: "default",
-};
+import "antd/dist/antd.css";
 
 const ImageUploader = ({
   className,
-  previewType,
+  previewType = "circle",
   image,
   onUpload,
   outputWidth,
   outputHeight,
-  themeName,
+  themeName = "default",
+  sizeLimit = 5000000,
 }: ImageUploaderProps & ThemeProps) => {
   const [croppedView, setCroppedView] = useState("");
   const [imgPreview, setImgPreview] = useState<Partial<ImgPreview>>({});
@@ -109,8 +105,7 @@ const ImageUploader = ({
   };
 
   const handleFileSize = (file: RcFile, fileList: RcFile[]) => {
-    const SIZE_LIMIT = 5000000;
-    if (file.size > SIZE_LIMIT) {
+    if (file.size > sizeLimit) {
       console.log("file too big");
       return false;
     }
@@ -163,7 +158,5 @@ const ImageUploader = ({
     </Theme>
   );
 };
-
-ImageUploader.defaultProps = defaultProps;
 
 export default ImageUploader;
