@@ -5,7 +5,7 @@ export interface CoverProps {
 export interface ImgPreview {
   width: number;
   height: number;
-  src: string | ArrayBuffer | null;
+  src: string | ArrayBuffer | null | undefined;
 }
 
 export interface ImageUploaderProps {

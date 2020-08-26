@@ -13,12 +13,6 @@ export const StyledComponent = styled.div`
   line-height: 1.5;
   font-variant: tabular-nums;
   background: ${(props) => props.theme.colors.bgPrimary};
-
-  & .img-uploader-preview {
-    & .circle {
-      border-radius: 200px;
-    }
-  }
 `;
 
 export const StyledIllustrate = styled.div`
@@ -71,4 +65,33 @@ export const StyledCover = styled.div<CoverProps>`
     -webkit-appearance: none;
     outline: none;
   }
+`;
+
+export const StyledUpload = styled.div`
+  display: flex;
+
+  & > .cropper {
+    float: left;
+    width: 100%;
+  }
+
+  & .preview {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-left: 10px;
+
+    &.circle {
+      border-radius: 200px;
+    }
+  }
+`;
+
+export const StyledActions = styled.div`
+  clear: both;
+  position: relative;
+  width: 440px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  z-index: 100;
 `;

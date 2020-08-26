@@ -1,19 +1,25 @@
 import React, { Fragment, useState, useRef, useEffect } from "react";
 import Cropper from "cropperjs";
-
 import { default as Upload, RcFile } from "antd/lib/upload";
 
-import { StyledCover, StyledIllustrate, StyledComponent } from "./styled";
+import {
+  StyledCover,
+  StyledIllustrate,
+  StyledComponent,
+  StyledUpload,
+  StyledActions,
+} from "./styled";
 import { ImageUploaderProps, ImgPreview, CanvasOpt } from "./types";
-import Button from '../Button';
+import Button from "../Button";
 import Theme, { ThemeProps } from "../../themes";
 
 import "cropperjs/dist/cropper.min.css";
+import 'antd/dist/antd.css';
 
 const defaultProps = {
   previewType: "circle",
-  themeName: "default"
-}
+  themeName: "default",
+};
 
 const ImageUploader = ({
   className,
@@ -130,31 +136,23 @@ const ImageUploader = ({
             beforeUpload={handleFileSize}
           />
           {imgPreview.src && (
-            <div className="img-uploader">
-              {/* @ts-ignore */}
-              <div
-                className="img-uploader-container"
-                style={{ width: imgWidth, height: imgHeight }}
-              >
+            <StyledUpload>
+              <div className="cropper" style={{ width: imgWidth, height: imgHeight }}>
                 {/* @ts-ignore */}
                 <img ref={imageEl} src={imgPreview.src} alt="source" />
               </div>
-              <img
-                src={croppedView}
-                className={"img-uploader-preview " + previewType}
-                alt="cropped preview"
-              />
-            </div>
+              <img src={croppedView} className={`preview ${previewType}`} alt="cropped preview" />
+            </StyledUpload>
           )}
           {imgPreview.src && (
-            <div className="actions-bar">
+            <StyledActions>
               <Button type="dashed" onClick={handleCancel}>
                 Cancel
               </Button>
               <Button type="dashed" onClick={handleUpload}>
                 OK
               </Button>
-            </div>
+            </StyledActions>
           )}
         </StyledCover>
         <StyledIllustrate>

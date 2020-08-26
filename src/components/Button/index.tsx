@@ -8,10 +8,12 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button = ({ type, children }: ButtonProps & ThemeProps) => {
+const Button = ({ type, children, onClick }: ButtonProps & ThemeProps) => {
   return (
     <Theme>
-      <AntdButton type={type}>{children}</AntdButton>
+      <AntdButton type={type} onClick={onClick}>
+        {children}
+      </AntdButton>
     </Theme>
   );
 };
