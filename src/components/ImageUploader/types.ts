@@ -10,7 +10,7 @@ export interface ImgPreview {
 
 export interface ImageUploaderProps {
   className?: string;
-  previewType: "circle" | "square";
+  previewType?: "circle" | "square";
   onUpload: (blob: any) => void;
   outputWidth?: number;
   outputHeight?: number;

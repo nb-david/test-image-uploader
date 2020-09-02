@@ -14,7 +14,6 @@ import Button from "../Button";
 import Theme, { ThemeProps } from "../../themes";
 
 import "cropperjs/dist/cropper.min.css";
-import "antd/dist/antd.css";
 
 const ImageUploader = ({
   className,

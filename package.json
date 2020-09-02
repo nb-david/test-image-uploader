@@ -1,6 +1,6 @@
 {
   "name": "test-image-uploader",
-  "version": "1.0.9",
+  "version": "1.0.14",
   "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
@@ -29,7 +29,8 @@
   },
   "peerDependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "antd": "^4.5.4"
   },
   "scripts": {
     "dev": "webpack-dev-server --open --hot --config webpack.dev.js",
