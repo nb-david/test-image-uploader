@@ -128,32 +128,33 @@ const ImageUploader = ({
             showUploadList={false}
             customRequest={handlePreview}
             beforeUpload={handleFileSize}
+            openFileDialogOnClick={false}
           />
-          {imgPreview.src && (
-            <StyledUpload>
-              <div className="cropper" style={{ width: imgWidth, height: imgHeight }}>
-                {/* @ts-ignore */}
-                <img ref={imageEl} src={imgPreview.src} alt="source" />
-              </div>
-              <img src={croppedView} className={`preview ${previewType}`} alt="cropped preview" />
-            </StyledUpload>
-          )}
-          {imgPreview.src && (
-            <StyledActions>
-              <Button type="dashed" onClick={handleCancel}>
-                Cancel
-              </Button>
-              <Button type="dashed" onClick={handleUpload}>
-                OK
-              </Button>
-            </StyledActions>
-          )}
         </StyledCover>
         <StyledIllustrate>
           <div>Tap to add an image</div>
           <span>Picture size should not exceed 5M</span>
         </StyledIllustrate>
       </StyledComponent>
+      {imgPreview.src && (
+        <StyledUpload>
+          <div className="cropper" style={{ width: imgWidth, height: imgHeight }}>
+            {/* @ts-ignore */}
+            <img ref={imageEl} src={imgPreview.src} alt="source" />
+          </div>
+          <img src={croppedView} className={`preview ${previewType}`} alt="cropped preview" />
+        </StyledUpload>
+      )}
+      {imgPreview.src && (
+        <StyledActions>
+          <Button type="dashed" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button type="dashed" onClick={handleUpload}>
+            OK
+          </Button>
+        </StyledActions>
+      )}
     </Theme>
   );
 };
