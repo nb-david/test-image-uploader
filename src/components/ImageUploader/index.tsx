@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Cropper from "cropperjs";
 import { default as Upload, RcFile } from "antd/lib/upload";
 

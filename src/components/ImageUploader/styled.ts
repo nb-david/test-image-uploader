@@ -4,7 +4,7 @@ import { CoverProps } from "./types";
 import imgUploadDefault from "../../assets/img/upload-account-cover.png";
 import imgUploadDefaultHover from "../../assets/img/upload-account-cover-hover.png";
 
-export const StyledComponent = styled.div`
+export const StyledComponent = styled.label`
   display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
@@ -54,6 +54,7 @@ export const StyledCover = styled.div<CoverProps>`
       background-image: url(${imgUploadDefaultHover});
       background-size: cover;
       pointer-events: none;
+      opacity: 0.8;
     }
   }
 
