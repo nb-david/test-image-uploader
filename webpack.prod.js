@@ -1,12 +1,12 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/indexProd.ts",
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "index.js",
-    libraryTarget: 'commonjs'
+    libraryTarget: "commonjs",
   },
   plugins: [new CleanWebpackPlugin()],
   externals: ["react", "react-dom", "cropperjs", "antd"],
@@ -32,14 +32,18 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]',
-        },
-      }
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192, // in bytes
+            },
+          },
+        ],
+      },
     ],
   },
-  target: 'node',
+  target: "node",
   resolve: {
     // Enable webpack find ts and tsx files without an extension
     extensions: [".tsx", ".ts", ".jsx", ".js"],
