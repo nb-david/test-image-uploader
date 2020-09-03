@@ -121,10 +121,9 @@ const ImageUploader = ({
 
   return (
     <Theme themeName={themeName}>
-      <StyledComponent>
+      <StyledComponent className={className}>
         <StyledCover image={image}>
           <Upload
-            className={className}
             showUploadList={false}
             customRequest={handlePreview}
             beforeUpload={handleFileSize}
