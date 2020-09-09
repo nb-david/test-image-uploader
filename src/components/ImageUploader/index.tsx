@@ -1,21 +1,30 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Cropper from "cropperjs";
-import { Button } from "antd";
 import { default as Upload, RcFile } from "antd/lib/upload";
 
-import { StyledCover, StyledIllustrate, StyledComponent } from "./styled";
-import { ImageUploaderProps , ImgPreview, CanvasOpt} from "./types";
+import {
+  StyledCover,
+  StyledIllustrate,
+  StyledComponent,
+  StyledUpload,
+  StyledActions,
+} from "./styled";
+import { ImageUploaderProps, ImgPreview, CanvasOpt } from "./types";
+import Button from "../Button";
+import Theme, { ThemeProps } from "../../themes";
 
 import "cropperjs/dist/cropper.min.css";
 
 const ImageUploader = ({
-  className = "",
-  type = "",
+  className,
+  previewType = "circle",
   image,
   onUpload,
   outputWidth,
   outputHeight,
-}: Partial<ImageUploaderProps>) => {
+  themeName = "default",
+  sizeLimit = 5000000,
+}: ImageUploaderProps & ThemeProps) => {
   const [croppedView, setCroppedView] = useState("");
   const [imgPreview, setImgPreview] = useState<Partial<ImgPreview>>({});
   const cropper = useRef<any>(null);
@@ -95,8 +104,7 @@ const ImageUploader = ({
   };
 
   const handleFileSize = (file: RcFile, fileList: RcFile[]) => {
-    const SIZE_LIMIT = 5000000;
-    if (file.size > SIZE_LIMIT) {
+    if (file.size > sizeLimit) {
       console.log("file too big");
       return false;
     }
@@ -112,44 +120,41 @@ const ImageUploader = ({
   imgHeight = 440;
 
   return (
-    <StyledComponent>
-      <StyledCover image={image}>
-        <Upload
-          className={className}
-          showUploadList={false}
-          customRequest={handlePreview}
-          beforeUpload={handleFileSize}
-        />
-        {imgPreview.src && (
-          <div className="img-uploader">
+    <Theme themeName={themeName}>
+      <StyledComponent className={className}>
+        <StyledCover image={image}>
+          <Upload
+            showUploadList={false}
+            customRequest={handlePreview}
+            beforeUpload={handleFileSize}
+            openFileDialogOnClick={false}
+          />
+        </StyledCover>
+        <StyledIllustrate>
+          <div>Tap to add an image</div>
+          <span>Picture size should not exceed 5M</span>
+        </StyledIllustrate>
+      </StyledComponent>
+      {imgPreview.src && (
+        <StyledUpload>
+          <div className="cropper" style={{ width: imgWidth, height: imgHeight }}>
             {/* @ts-ignore */}
-            <div className="img-uploader-container" style={{ width: imgWidth, height: imgHeight }}>
-              {/* @ts-ignore */}
-              <img ref={imageEl} src={imgPreview.src} alt="source" />
-            </div>
-            <img
-              src={croppedView}
-              className={"img-uploader-preview " + type}
-              alt="cropped preview"
-            />
+            <img ref={imageEl} src={imgPreview.src} alt="source" />
           </div>
-        )}
-        {imgPreview.src && (
-          <div className="actions-bar">
-            <Button type="dashed" onClick={handleCancel}>
-              Cancel
-            </Button>
-            <Button type="dashed" onClick={handleUpload}>
-              OK
-            </Button>
-          </div>
-        )}
-      </StyledCover>
-      <StyledIllustrate>
-        <div>Tap to add an image</div>
-        <span>Picture size should not exceed 5M</span>
-      </StyledIllustrate>
-    </StyledComponent>
+          <img src={croppedView} className={`preview ${previewType}`} alt="cropped preview" />
+        </StyledUpload>
+      )}
+      {imgPreview.src && (
+        <StyledActions>
+          <Button type="dashed" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button type="dashed" onClick={handleUpload}>
+            OK
+          </Button>
+        </StyledActions>
+      )}
+    </Theme>
   );
 };
 

@@ -4,7 +4,7 @@ import { CoverProps } from "./types";
 import imgUploadDefault from "../../assets/img/upload-account-cover.png";
 import imgUploadDefaultHover from "../../assets/img/upload-account-cover-hover.png";
 
-export const StyledComponent = styled.div`
+export const StyledComponent = styled.label`
   display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
@@ -12,6 +12,7 @@ export const StyledComponent = styled.div`
   font-size: 16px;
   line-height: 1.5;
   font-variant: tabular-nums;
+  background: ${(props) => props.theme.colors.bgPrimary};
 `;
 
 export const StyledIllustrate = styled.div`
@@ -19,7 +20,7 @@ export const StyledIllustrate = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 15px;
-  color: ${props => props.theme.color.primary};
+  color: ${(props) => props.theme.colors.primary};
 
   & > div {
     margin-bottom: 9px;
@@ -40,6 +41,7 @@ export const StyledCover = styled.div<CoverProps>`
   border-radius: 50%;
   text-size-adjust: 100%;
   background-image: url(${(props) => (props.image ? props.image : imgUploadDefault)});
+  z-index: 100;
 
   &:hover {
     &::before {
@@ -52,6 +54,7 @@ export const StyledCover = styled.div<CoverProps>`
       background-image: url(${imgUploadDefaultHover});
       background-size: cover;
       pointer-events: none;
+      opacity: 0.8;
     }
   }
 
@@ -64,4 +67,33 @@ export const StyledCover = styled.div<CoverProps>`
     -webkit-appearance: none;
     outline: none;
   }
+`;
+
+export const StyledUpload = styled.div`
+  display: flex;
+
+  & > .cropper {
+    float: left;
+    width: 100%;
+  }
+
+  & .preview {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-left: 10px;
+
+    &.circle {
+      border-radius: 200px;
+    }
+  }
+`;
+
+export const StyledActions = styled.div`
+  clear: both;
+  position: relative;
+  width: 440px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  z-index: 100;
 `;

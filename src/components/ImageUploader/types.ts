@@ -5,16 +5,17 @@ export interface CoverProps {
 export interface ImgPreview {
   width: number;
   height: number;
-  src: string | ArrayBuffer | null;
+  src: string | ArrayBuffer | null | undefined;
 }
 
 export interface ImageUploaderProps {
-  className: string;
-  type: string;
-  onUpload: any;
-  outputWidth: number;
-  outputHeight: number;
-  image: string;
+  className?: string;
+  previewType?: "circle" | "square";
+  onUpload: (blob: any) => void;
+  outputWidth?: number;
+  outputHeight?: number;
+  image?: string;
+  sizeLimit?: number;
 }
 
 export interface CanvasOpt {

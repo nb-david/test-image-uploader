@@ -29,10 +29,14 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]',
-        },
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192, // in bytes
+            },
+          },
+        ],
       },
     ],
   },
