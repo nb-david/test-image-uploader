@@ -17,6 +17,8 @@ import "cropperjs/dist/cropper.min.css";
 
 const ImageUploader = ({
   className,
+  children,
+  coverText,
   previewType = "circle",
   image,
   onUpload,
@@ -115,24 +117,26 @@ const ImageUploader = ({
   if (imgPreview && imgPreview.width && imgPreview.height) {
     imgWidth = Math.min(imgPreview.width, 440);
     imgHeight = (imgPreview.height / imgPreview.width) * imgWidth;
+  } else {
+    imgWidth = 440;
+    imgHeight = 440;
   }
-  imgWidth = 440;
-  imgHeight = 440;
+
+  const classNamePrefix = className || 'nb-uploader';
 
   return (
     <Theme themeName={themeName}>
       <StyledComponent className={className}>
-        <StyledCover image={image}>
+        <StyledCover image={image} className={classNamePrefix + "-cover"}>
           <Upload
             showUploadList={false}
             customRequest={handlePreview}
             beforeUpload={handleFileSize}
             openFileDialogOnClick={false}
-          />
+          >{!image && (coverText || "")}</Upload>
         </StyledCover>
-        <StyledIllustrate>
-          <div>Tap to add an image</div>
-          <span>Picture size should not exceed 5M</span>
+        <StyledIllustrate className={classNamePrefix + "-help-text"}>
+          {children}
         </StyledIllustrate>
       </StyledComponent>
       {imgPreview.src && (
