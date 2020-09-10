@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface CoverProps {
   image?: string;
 }
@@ -10,6 +12,8 @@ export interface ImgPreview {
 
 export interface ImageUploaderProps {
   className?: string;
+  children?: ReactNode;
+  coverText?: string;
   previewType?: "circle" | "square";
   onUpload: (blob: any) => void;
   outputWidth?: number;

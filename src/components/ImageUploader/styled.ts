@@ -66,6 +66,11 @@ export const StyledCover = styled.div<CoverProps>`
     height: 100%;
     -webkit-appearance: none;
     outline: none;
+    font-size: 12px;
+    text-align: center;
+    span {
+      margin-top: 40%;
+    }
   }
 `;
 
