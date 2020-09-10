@@ -133,7 +133,7 @@ const ImageUploader = ({
             customRequest={handlePreview}
             beforeUpload={handleFileSize}
             openFileDialogOnClick={false}
-          >{!image && (coverText || "")}</Upload>
+          >{!image && <span>{coverText || ""}</span>}</Upload>
         </StyledCover>
         <StyledIllustrate className={classNamePrefix + "-help-text"}>
           {children}
