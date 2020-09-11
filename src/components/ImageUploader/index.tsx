@@ -122,12 +122,10 @@ const ImageUploader = ({
     imgHeight = 440;
   }
 
-  const classNamePrefix = className || 'nb-uploader';
-
   return (
     <Theme themeName={themeName}>
-      <StyledComponent className={(className || "") + (image ? "" : " no-image")}>
-        <StyledCover image={image} className={classNamePrefix + "-cover"}>
+      <StyledComponent className={className}>
+        <StyledCover image={image} className="nb-uploader-cover">
           <Upload
             showUploadList={false}
             customRequest={handlePreview}
@@ -135,7 +133,7 @@ const ImageUploader = ({
             openFileDialogOnClick={false}
           >{!image && <span>{coverText || ""}</span>}</Upload>
         </StyledCover>
-        <StyledIllustrate className={classNamePrefix + "-help-text"}>
+        <StyledIllustrate className="nb-uploader-help-text">
           {children}
         </StyledIllustrate>
       </StyledComponent>

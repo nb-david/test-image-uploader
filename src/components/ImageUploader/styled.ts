@@ -41,6 +41,7 @@ export const StyledCover = styled.div<CoverProps>`
   border-radius: 50%;
   text-size-adjust: 100%;
   background-image: url(${(props) => (props.image ? props.image : imgUploadDefault)});
+  background-repeat: no-repeat;
   z-index: 100;
 
   &:hover {
