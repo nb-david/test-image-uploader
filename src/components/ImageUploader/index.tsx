@@ -126,7 +126,7 @@ const ImageUploader = ({
 
   return (
     <Theme themeName={themeName}>
-      <StyledComponent className={className}>
+      <StyledComponent className={(className || "") + (image ? "" : " no-image")}>
         <StyledCover image={image} className={classNamePrefix + "-cover"}>
           <Upload
             showUploadList={false}

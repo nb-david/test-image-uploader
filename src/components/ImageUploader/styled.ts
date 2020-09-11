@@ -35,8 +35,8 @@ export const StyledCover = styled.div<CoverProps>`
   position: relative;
   display: block;
   cursor: pointer;
-  width: 70px;
-  height: 70px;
+  width: 84px;
+  height: 84px;
   background-size: cover;
   border-radius: 50%;
   text-size-adjust: 100%;
@@ -68,7 +68,8 @@ export const StyledCover = styled.div<CoverProps>`
     outline: none;
     font-size: 12px;
     text-align: center;
-    span {
+    span[role=button] span {
+      display: inline-block;
       margin-top: 40%;
     }
   }
