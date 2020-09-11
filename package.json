@@ -1,6 +1,6 @@
 {
   "name": "test-image-uploader",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
